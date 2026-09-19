@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UCSD prerequisite map</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="brand">
+        <h1>Course Requirements</h1>
+      </div>
+      <label class="file-picker">
+        <span>Load CSV</span>
+        <input id="csv-file" type="file" accept=".csv,text/csv" />
+      </label>
+    </header>
+
+    <main>
+      <section class="controls">
+        <div id="department-filters" class="department-filters" aria-label="Filter departments"></div>
+        <div class="taken-picker">
+          <button id="taken-toggle" class="taken-toggle" type="button" aria-expanded="true" aria-controls="taken-panel">
+            <span>Courses taken</span>
+            <span id="taken-toggle-icon" aria-hidden="true">⌃</span>
+          </button>
+          <div id="taken-panel" class="taken-panel">
+            <label for="taken-search" class="sr-only">Search courses taken</label>
+            <input id="taken-search" type="search" placeholder="Add completed courses…" autocomplete="off" />
+            <div id="taken-options" class="taken-options" hidden></div>
+            <div id="taken-list" class="taken-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="Course views">
+        <button id="explore-tab" class="tab active" type="button">Explore courses</button>
+        <button id="progress-tab" class="tab" type="button">My progress</button>
+      </nav>
+
+      <section id="workspace" class="workspace">
+        <aside class="course-list">
+          <label class="course-search">
+            <span class="sr-only">Search classes</span>
+            <input id="class-search" type="search" placeholder="Search classes…" autocomplete="off" />
+          </label>
+          <div class="section-heading">
+            <h2>Classes</h2>
+            <span id="course-count"></span>
+          </div>
+          <div id="course-options" class="course-options"></div>
+        </aside>
+        <section class="map-panel">
+          <div id="map-content" class="map-content" hidden>
+            <div class="map-header">
+              <div>
+                <button id="back-button" class="back-button" type="button" aria-label="Go back to previous class" hidden>← Back</button>
+                <p class="eyebrow">PREREQUISITE PATH</p>
+                <h2 id="selected-title"></h2>
+                <p id="selected-description"></p>
+              </div>
+              <span id="selected-department" class="department-pill"></span>
+            </div>
+            <div id="tree" class="tree" aria-live="polite"></div>
+            <section id="class-details" class="class-details" aria-live="polite"></section>
+          </div>
+        </section>
+      </section>
+      <section id="progress-content" class="progress-content" hidden></section>
+      <p id="status" class="status" role="status"></p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
